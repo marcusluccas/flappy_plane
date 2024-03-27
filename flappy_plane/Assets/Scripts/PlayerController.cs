@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -20,6 +21,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             meuRB.velocity = Vector2.up * velocidade;
+        }
+
+        if (meuRB.velocity.y < -velocidade)
+        {
+            meuRB.velocity = Vector2.down * velocidade;
         }
     }
 }
