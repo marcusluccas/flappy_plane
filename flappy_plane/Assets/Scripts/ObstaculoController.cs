@@ -6,6 +6,8 @@ using UnityEngine;
 public class ObstaculoController : MonoBehaviour
 {
     [SerializeField] private float velocidade = 5f;
+
+    [SerializeField] private GameObject eu;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +18,10 @@ public class ObstaculoController : MonoBehaviour
     void Update()
     {
         transform.position += Vector3.left * velocidade * Time.deltaTime;
+
+        if (transform.position.x < -12f)
+        {
+            Destroy(eu);
+        }
     }
 }
