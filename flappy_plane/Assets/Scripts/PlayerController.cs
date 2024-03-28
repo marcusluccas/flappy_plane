@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,14 +19,33 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Subir();
+
+        LimitandoY();
+    }
+
+    //Criando metodo de subir o avião
+    void Subir()
+    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             meuRB.velocity = Vector2.up * velocidade;
         }
+    }
 
+    //Criando um metodo de limitar o y
+    void LimitandoY()
+    {
         if (meuRB.velocity.y < -velocidade)
         {
             meuRB.velocity = Vector2.down * velocidade;
         }
+    }
+
+    //Metodo de colisao de player com os obstaculos
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //reiniciar o jogo se o player colidir o obstaculo
+        SceneManager.LoadScene("Jogo");
     }
 }
