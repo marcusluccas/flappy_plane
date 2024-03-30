@@ -23,8 +23,6 @@ public class ObstaculoController : MonoBehaviour
     {
         levelVel = game.RetornaLevel();
 
-        Debug.Log(levelVel);
-
         transform.position += Vector3.left * (velocidade + levelVel) * Time.deltaTime;
 
         if (transform.position.x < -12f)
