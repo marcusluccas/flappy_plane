@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -17,6 +18,16 @@ public class GameController : MonoBehaviour
     [SerializeField] private float minT = 1f;
     [SerializeField] private float maxT = 3f;
 
+    [SerializeField] private float pontos = 0f;
+
+    [SerializeField] private Text meuMostradorPontos;
+
+    private int level = 1;
+
+    [SerializeField] private float proximoLevel = 10f;
+
+    [SerializeField] private Text levelText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +37,44 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Ponto();
+
+        CriaObstaculo();
+
+        GanhaLevel();
+    }
+
+    //Criando metodos dos pontos
+    void Ponto()
+    {
+        pontos += Time.deltaTime;
+
+        meuMostradorPontos.text = "Pontos : " + Mathf.Round(pontos).ToString();
+    }
+
+    //Criando o metodo de ganhar levels
+    void GanhaLevel()
+    {
+        levelText.text = level.ToString();
+
+        if (pontos >= proximoLevel)
+        {
+            level++;
+            proximoLevel *= 2;
+        }
+
+
+    }
+
+    //Criando um metodo de renornar o level
+    public int RetornaLevel()
+    {
+        return level;
+    }
+
+    //Criando o metodo de criar os obstaculos
+    void CriaObstaculo()
+    {
         timer -= Time.deltaTime;
 
         if (timer <= 0f)
@@ -34,7 +83,7 @@ public class GameController : MonoBehaviour
 
             Instantiate(obstaculo, posicao, Quaternion.identity);
 
-            timer = Random.Range(minT, maxT);
+            timer = Random.Range(minT / level, maxT / level);
         }
     }
 }
