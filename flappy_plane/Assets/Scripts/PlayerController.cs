@@ -10,6 +10,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D meuRB;
     [SerializeField] private float velocidade = 5f;
 
+    [SerializeField] float minY = -6f;
+    [SerializeField] float maxY = 5.5f;
+
+    [SerializeField] GameObject meuPuff;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +35,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             meuRB.velocity = Vector2.up * velocidade;
+            GameObject Puff = Instantiate(meuPuff, transform.position, Quaternion.identity);
+            Destroy(Puff, 1f);
         }
     }
 
@@ -39,6 +46,15 @@ public class PlayerController : MonoBehaviour
         if (meuRB.velocity.y < -velocidade)
         {
             meuRB.velocity = Vector2.down * velocidade;
+        }
+
+        if (transform.position.y > maxY)
+        {
+            SceneManager.LoadScene("Jogo");
+        }
+        else if (transform.position.y < minY)
+        {
+            SceneManager.LoadScene("Jogo");
         }
     }
 
