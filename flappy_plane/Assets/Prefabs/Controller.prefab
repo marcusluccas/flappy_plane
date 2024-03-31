@@ -49,3 +49,10 @@ MonoBehaviour:
   posicao: {x: 0, y: 0, z: 0}
   minY: -1.5
   maxY: 2.2
+  minT: 1
+  maxT: 3
+  pontos: 0
+  meuMostradorPontos: {fileID: 0}
+  proximoLevel: 10
+  levelText: {fileID: 0}
+  levelSound: {fileID: 8300000, guid: 5bcb0a002c0166640a7ab9b5a9c5ad28, type: 3}

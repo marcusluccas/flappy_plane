@@ -28,9 +28,14 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private Text levelText;
 
+    [SerializeField] private AudioClip levelSound;
+
+    private Camera minhaCamera;
+
     // Start is called before the first frame update
     void Start()
     {
+        minhaCamera = FindObjectOfType<Camera>();
         posicao.x = 12;
     }
 
@@ -59,11 +64,11 @@ public class GameController : MonoBehaviour
 
         if (pontos >= proximoLevel)
         {
+            AudioSource.PlayClipAtPoint(levelSound, minhaCamera.transform.position);
+
             level++;
             proximoLevel *= 2;
         }
-
-
     }
 
     //Criando um metodo de renornar o level
