@@ -8,19 +8,17 @@ public class BGController : MonoBehaviour
     private Vector2 meuOffset;
     private float meuXoffset = 0;
     private float velocidade;
-    private GameController game;
 
     // Start is called before the first frame update
     void Start()
-    {
-        game = FindObjectOfType<GameController>();
+    {;
         meuFundo = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        velocidade = 0.1f * game.RetornaLevel();
+        velocidade = 0.1f;
 
         meuXoffset += velocidade * Time.deltaTime;
 

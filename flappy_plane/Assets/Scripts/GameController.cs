@@ -52,7 +52,7 @@ public class GameController : MonoBehaviour
     //Criando metodos dos pontos
     void Ponto()
     {
-        pontos += Time.deltaTime;
+        pontos += level * Time.deltaTime;
 
         meuMostradorPontos.text = "Pontos : " + Mathf.Round(pontos).ToString();
     }

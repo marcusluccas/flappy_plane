@@ -50,11 +50,11 @@ public class PlayerController : MonoBehaviour
 
         if (transform.position.y > maxY)
         {
-            SceneManager.LoadScene("Jogo");
+            SceneManager.LoadScene(0);
         }
         else if (transform.position.y < minY)
         {
-            SceneManager.LoadScene("Jogo");
+            SceneManager.LoadScene(0);
         }
     }
 
@@ -62,6 +62,6 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //reiniciar o jogo se o player colidir o obstaculo
-        SceneManager.LoadScene("Jogo");
+        SceneManager.LoadScene(0);
     }
 }
